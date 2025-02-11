@@ -1,8 +1,8 @@
 <template>
   <div>
-    <button v-if="!isTesting" @click="startTest" class="start-button">
+    <UButton size="md" v-if="!isTesting" @click="startTest">
       开始屏幕检测
-    </button>
+    </UButton>
 
     <div
       v-show="isTesting"
@@ -10,7 +10,7 @@
       class="color-screen"
       :style="{ backgroundColor: currentColor.value }"
     >
-      <div v-show="1 && showColorInfo" class="color-info">
+      <div v-show="showColorInfo" class="color-info">
         <div class="color-name">{{ currentColor.name }}</div>
         <div class="instruction">← → 切换颜色 | ESC 退出检测</div>
       </div>
@@ -84,21 +84,6 @@ useEventListener(document, 'fullscreenchange', () => {
 </script>
 
 <style scoped>
-.start-button {
-  padding: 12px 24px;
-  font-size: 1.2em;
-  background: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.start-button:hover {
-  transform: scale(1.05);
-}
-
 .color-screen {
   position: fixed;
   top: 0;

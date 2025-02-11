@@ -1,13 +1,13 @@
 <template>
-  <h3>System:</h3>
-  <li v-for="item in info.system">{{ item.label + ': ' + item.value }}</li>
-  <h3>Browser:</h3>
-  <li v-for="item in info.browser">{{ item.label + ': ' + item.value }}</li>
-  <h3>Help:</h3>
-  <li>分辨率为逻辑像素，即 分辨率=屏幕分辨率/总缩放倍率；</li>
-  <li>
-    总缩放倍率=系统缩放倍率×浏览器缩放倍率（例如，系统125%，浏览器100%，则总1.25）；
-  </li>
+  <UCard>
+    <template #header>
+      <h3>System:</h3>
+      <li v-for="item in info.system">{{ item.label + ': ' + item.value }}</li>
+    </template>
+
+    <h3>Browser:</h3>
+    <li v-for="item in info.browser">{{ item.label + ': ' + item.value }}</li>
+  </UCard>
 </template>
 <script setup lang="ts">
 // import {
@@ -33,8 +33,8 @@ const info = reactive({
   ],
   browser: [
     { label: '刷新率', value: fps },
-    { label: '分辨率(宽)', value: size.width },
-    { label: '分辨率(高)', value: size.height },
+    { label: '逻辑分辨率(宽)', value: size.width },
+    { label: '逻辑分辨率(高)', value: size.height },
     { label: '总缩放倍率', value: ratio.pixelRatio }
   ]
 });

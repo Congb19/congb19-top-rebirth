@@ -26,8 +26,8 @@ watchEffect(() => {
 });
 
 const addMerit = () => {
-  console.log('功德+1')
-}
+  console.log('功德+1');
+};
 
 onMounted(() => {
   startWelcome();
@@ -60,14 +60,8 @@ onMounted(() => {
   </div>
 </template>
 <style>
-.cb-index {
-  display: flex;
-  justify-content: center;
-
-  min-width: 800px;
-}
 .cb-profile {
-  padding: 200px 100px;
+  padding: 200px 0px;
 
   .cb-profile-title {
     display: flex;

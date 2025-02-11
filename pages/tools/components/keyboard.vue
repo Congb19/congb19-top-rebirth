@@ -1,25 +1,33 @@
 <template>
   <div class="keyboard-container">
-    <div class="status-header">
-      <div class="counter">按键数量: {{ keyCount }}</div>
-      <div class="last-key">最后按键: {{ lastKey || '无' }}</div>
-    </div>
-
-    <div class="keyboard-grid">
-      <div
-        v-for="(value, key) in activeKeys"
-        :key="key"
-        class="key-block"
-        :class="{ active: value }"
-      >
-        <div class="key-label">
-          {{ formatKeyName(key) }}
+    <UCard>
+      <template #header>
+        <div class="status-header">
+          <div class="counter">按键数量: {{ keyCount }}</div>
+          <div class="last-key">最后按键: {{ lastKey || '无' }}</div>
         </div>
-        <div class="key-state">
-          {{ value ? '按下' : '抬起' }}
+      </template>
+
+      <div class="keyboard-grid">
+        <div
+          v-for="(value, key) in activeKeys"
+          :key="key"
+          class="key-block"
+          :class="{ active: value }"
+        >
+          <div class="key-label">
+            {{ formatKeyName(key) }}
+          </div>
+          <div class="key-state">
+            {{ value ? '按下' : '抬起' }}
+          </div>
         </div>
       </div>
-    </div>
+
+      <template #footer>
+        按键即可自动检测
+      </template>
+    </UCard>
   </div>
 </template>
 
@@ -71,20 +79,13 @@ useEventListener(document, 'keyup', (event) => {
 <style scoped>
 .keyboard-container {
   max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background: #f0f0f0;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
 }
 
 .status-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
-  padding: 10px;
-  background: #ffffff;
-  border-radius: 8px;
 }
 
 .keyboard-grid {
@@ -118,11 +119,5 @@ useEventListener(document, 'keyup', (event) => {
 .key-state {
   font-size: 0.9em;
   opacity: 0.8;
-}
-
-.counter,
-.last-key {
-  font-weight: bold;
-  color: #666;
 }
 </style>

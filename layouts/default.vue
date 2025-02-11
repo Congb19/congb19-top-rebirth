@@ -10,24 +10,19 @@ const isDark = computed({
 });
 const links = [
   {
-    label: 'Profile',
+    label: 'Home',
     icon: 'i-material-symbols-house-outline-rounded',
     to: '/'
   },
   {
-    label: 'Keyboard',
-    icon: 'i-material-symbols-keyboard-alt-outline',
-    to: '/tools/keyboard'
+    label: 'Tools',
+    icon: 'i-material-symbols-tools-wrench-outline-rounded',
+    to: '/tools'
   },
   {
-    label: 'Screen',
-    icon: 'i-material-symbols-screen-search-desktop-outline',
-    to: '/tools/screen'
-  },
-  {
-    label: 'Sysinfo',
-    icon: 'i-material-symbols-info-outline-rounded',
-    to: '/tools/sysinfo'
+    label: 'About',
+    icon: 'i-material-symbols-familiar-face-and-zone-outline',
+    to: '/about'
   }
 ];
 const backHome = () => {
@@ -77,11 +72,24 @@ const backHome = () => {
     <div class="cb-layout-content">
       <slot />
     </div>
-    <footer class="cb-layout-footer">浙evhuiruhiehuer</footer>
+    <footer class="cb-layout-footer mb-10">
+      <ULink
+        active-class="text-primary"
+        inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+        to="http://beian.miit.gov.cn"
+      >
+        浙ICP备2021020364号-1
+      </ULink>
+    </footer>
   </div>
 </template>
 
 <style>
+.cb-index {
+  display: flex;
+  justify-content: center;
+  min-width: 600px;
+}
 .cb-layout {
   /* background-color: red; */
   height: 100vh;
@@ -95,7 +103,7 @@ const backHome = () => {
 }
 .cb-layout-header {
   height: 64px;
-  min-width: 800px;
+  min-width: 600px;
   /* padding: 20px 0px; */
   position: fixed;
   top: 0;
@@ -106,9 +114,9 @@ const backHome = () => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   * {
     vertical-align: bottom;
-    /* line-height: 32px; */
     flex-shrink: 0;
   }
   .header-items {
@@ -130,13 +138,13 @@ const backHome = () => {
 }
 .cb-layout-content {
   padding-top: 64px;
-  height: calc(100% - 24px);
+  height: calc(100% - 34px);
   overflow: auto;
 }
 .cb-layout-footer {
   display: flex;
   justify-content: center;
-  height: 24px;
+  height: 34px;
 }
 
 .cb-layout-dark {

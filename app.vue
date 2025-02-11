@@ -1,11 +1,10 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 <template>
   <div>
     <NuxtRouteAnnouncer />
     <!-- <NuxtWelcome /> -->
     <NuxtLayout>
-      <NuxtPage />
+      <NuxtPage keepalive />
     </NuxtLayout>
   </div>
 </template>
