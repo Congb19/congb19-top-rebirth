@@ -6,6 +6,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "generate-docs": "nuxt generate && mkdir -p docs && cp -R .output/public/* docs/",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
