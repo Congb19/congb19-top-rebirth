@@ -2,6 +2,7 @@
 import Keyboard from './components/keyboard.vue';
 import Screen from './components/screen.vue';
 import SysInfo from './components/sysinfo.vue';
+import Reaction from './components/reaction.vue';
 </script>
 <template>
   <div class="cb-index">
@@ -10,9 +11,10 @@ import SysInfo from './components/sysinfo.vue';
       <SysInfo />
       <UDivider class="cb-tools-divider" label="键盘检测工具" />
       <Keyboard />
-
       <UDivider class="cb-tools-divider" label="屏幕检测工具" />
       <Screen />
+      <UDivider class="cb-tools-divider" label="反应速度测试" />
+      <Reaction />
     </div>
   </div>
 </template>
@@ -20,6 +22,8 @@ import SysInfo from './components/sysinfo.vue';
 .cb-tools {
   min-width: 600px;
   max-width: 800px;
+
+  margin-bottom: 20px;
 
   /* padding: 100px 0; */
   .cb-tools-divider {

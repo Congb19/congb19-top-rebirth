@@ -53,8 +53,8 @@ const backHome = () => {
               target="_blank"
             />
           </UTooltip>
-          <UTooltip :text="!isDark ? '切换到深色模式' : '切换到浅色模式'">
-            <UButton
+          <UTooltip class="header-buttons-btn" :text="!isDark ? '切换到深色模式' : '切换到浅色模式'">
+            <!-- <UButton
               :icon="
                 isDark
                   ? 'i-heroicons-moon-20-solid'
@@ -64,7 +64,8 @@ const backHome = () => {
               variant="ghost"
               aria-label="Theme"
               @click="isDark = !isDark"
-            />
+            /> -->
+            <UToggle v-model="isDark" size="md" on-icon="i-heroicons-moon-20-solid" off-icon="i-heroicons-sun-20-solid" />
           </UTooltip>
         </div>
       </div>
@@ -133,6 +134,12 @@ const backHome = () => {
     .header-buttons {
       display: flex;
       gap: 8px;
+
+      .header-buttons-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
     }
   }
 }

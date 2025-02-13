@@ -1,3 +1,48 @@
+<script setup>
+// import { ref, computed } from 'vue'
+// import { useEventListener } from '@vueuse/core'
+
+const activeKeys = ref({});
+const lastKey = ref('');
+
+// 按键数量计算属性
+const keyCount = computed(() => Object.keys(activeKeys.value).length);
+
+// 格式化特殊按键名称
+const formatKeyName = (key) => {
+  console.log('press:', key);
+  const specialKeys = {
+    ' ': 'Space',
+    ArrowUp: '↑',
+    ArrowDown: '↓',
+    ArrowLeft: '←',
+    ArrowRight: '→',
+    Control: 'Control',
+    Meta: 'Win/Cmd',
+    AltGraph: 'Alt/Option',
+    Alt: 'Alt/Option'
+  };
+  return specialKeys?.[key] || key?.toUpperCase();
+};
+
+// 处理按键按下
+useEventListener(document, 'keydown', (event) => {
+  if (!activeKeys.value[event.key]) {
+    activeKeys.value[event.key] = true;
+    lastKey.value = formatKeyName(event.key);
+    event.preventDefault(); // 防止默认行为
+  }
+});
+
+// 处理按键释放
+useEventListener(document, 'keyup', (event) => {
+  activeKeys.value[event.key] = false;
+  setTimeout(() => {
+    delete activeKeys.value[event.key];
+  }, 100); // 添加短暂延迟以获得更好的视觉效果
+});
+</script>
+
 <template>
   <div class="keyboard-container">
     <UCard>
@@ -24,57 +69,10 @@
         </div>
       </div>
 
-      <template #footer>
-        按键即可自动检测
-      </template>
+      <template #footer> 按键即可自动检测 </template>
     </UCard>
   </div>
 </template>
-
-<script setup>
-// import { ref, computed } from 'vue'
-// import { useEventListener } from '@vueuse/core'
-
-const activeKeys = ref({});
-const lastKey = ref('');
-
-// 按键数量计算属性
-const keyCount = computed(() => Object.keys(activeKeys.value).length);
-
-// 格式化特殊按键名称
-const formatKeyName = (key) => {
-  console.log('press:', key);
-  const specialKeys = {
-    ' ': 'Space',
-    ArrowUp: '↑',
-    ArrowDown: '↓',
-    ArrowLeft: '←',
-    ArrowRight: '→',
-    Control: 'Control',
-    Meta: 'Win/Cmd',
-    AltGraph: 'Alt/Option',
-    Alt: 'Alt/Option'
-  };
-  return specialKeys[key] || key?.toUpperCase();
-};
-
-// 处理按键按下
-useEventListener(document, 'keydown', (event) => {
-  if (!activeKeys.value[event.key]) {
-    activeKeys.value[event.key] = true;
-    lastKey.value = formatKeyName(event.key);
-    event.preventDefault(); // 防止默认行为
-  }
-});
-
-// 处理按键释放
-useEventListener(document, 'keyup', (event) => {
-  activeKeys.value[event.key] = false;
-  setTimeout(() => {
-    delete activeKeys.value[event.key];
-  }, 100); // 添加短暂延迟以获得更好的视觉效果
-});
-</script>
 
 <style scoped>
 .keyboard-container {

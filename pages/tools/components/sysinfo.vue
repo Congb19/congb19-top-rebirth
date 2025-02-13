@@ -1,24 +1,5 @@
-<template>
-  <UCard>
-    <template #header>
-      <h3>System:</h3>
-      <li v-for="item in info.system">{{ item.label + ': ' + item.value }}</li>
-    </template>
 
-    <h3>Browser:</h3>
-    <li v-for="item in info.browser">{{ item.label + ': ' + item.value }}</li>
-  </UCard>
-</template>
 <script setup lang="ts">
-// import {
-//   useOnline,
-//   useBattery,
-//   useFps,
-//   useWindowSize,
-//   useDevicePixelRatio
-// } from '@vueuse/core';
-import { reactive } from 'vue';
-// import { NLi } from 'naive-ui';
 const online = useOnline();
 const battery = useBattery();
 const fps = useFps();
@@ -40,3 +21,15 @@ const info = reactive({
 });
 console.log(info);
 </script>
+
+<template>
+  <UCard>
+    <template #header>
+      <h3>System:</h3>
+      <li v-for="item in info.system">{{ item.label + ': ' + item.value }}</li>
+    </template>
+
+    <h3>Browser:</h3>
+    <li v-for="item in info.browser">{{ item.label + ': ' + item.value }}</li>
+  </UCard>
+</template>

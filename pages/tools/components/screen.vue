@@ -1,23 +1,3 @@
-<template>
-  <div>
-    <UButton size="md" v-if="!isTesting" @click="startTest">
-      开始屏幕检测
-    </UButton>
-
-    <div
-      v-show="isTesting"
-      ref="container"
-      class="color-screen"
-      :style="{ backgroundColor: currentColor.value }"
-    >
-      <div v-show="showColorInfo" class="color-info">
-        <div class="color-name">{{ currentColor.name }}</div>
-        <div class="instruction">← → 切换颜色 | ESC 退出检测</div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 const isTesting = ref(false);
 const showColorInfo = ref(false);
@@ -82,6 +62,26 @@ useEventListener(document, 'fullscreenchange', () => {
   }
 });
 </script>
+
+<template>
+  <div>
+    <UButton size="md" v-if="!isTesting" @click="startTest">
+      开始屏幕检测
+    </UButton>
+
+    <div
+      v-show="isTesting"
+      ref="container"
+      class="color-screen"
+      :style="{ backgroundColor: currentColor.value }"
+    >
+      <div v-show="showColorInfo" class="color-info">
+        <div class="color-name">{{ currentColor.name }}</div>
+        <div class="instruction">← → 切换颜色 | ESC 退出检测</div>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style scoped>
 .color-screen {

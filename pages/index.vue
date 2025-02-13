@@ -1,4 +1,5 @@
 <script setup>
+const toast = useToast();
 const {
   start: startWelcome,
   stop: stopWelcome,
@@ -27,6 +28,7 @@ watchEffect(() => {
 
 const addMerit = () => {
   console.log('功德+1');
+  toast.add({ title: '功德+1', timeout: 2000 });
 };
 
 onMounted(() => {
