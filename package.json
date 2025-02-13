@@ -6,7 +6,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "deploy:github_pages": "nuxt generate --preset github_pages",
+    "generate:github_pages": "nuxt generate --preset github_pages && mkdir -p github_pages && cp -R .output/public/* github_pages/",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
