@@ -28,22 +28,43 @@ const links = [
 const backHome = () => {
   navigateTo('/');
 };
+
+const { jump, rotate } = useAnimation();
+
+const githubLinkJump = () => {
+  const target = document.querySelector('.cb-layout-header-github-link');
+  if (target) jump(target);
+};
+const githubLinkRotate = () => {
+  const target = document.querySelector('.cb-layout-header-github-link');
+  if (target) rotate(target);
+};
+const avatarRotate = () => {
+  const target = document.querySelector('.cb-layout-header-avatar');
+  if (target) rotate(target);
+};
 </script>
 
 <template>
   <div class="cb-layout" :class="{ 'cb-layout-dark': isDark }">
     <header class="cb-layout-header">
       <div class="header-items">
-        <div class="header-title" @click="backHome">
-          <UAvatar src="/imgs/logo.jpg" alt="Avatar" size="sm" />
+        <div class="header-title" @click="backHome" @mouseenter="avatarRotate">
+          <UAvatar
+            class="cb-layout-header-avatar"
+            src="/imgs/logo.jpg"
+            alt="Avatar"
+            size="sm"
+          />
           Congb19
         </div>
         <div class="header-links">
           <UHorizontalNavigation :links="links" />
         </div>
         <div class="header-buttons">
-          <UTooltip text="Github·Congb19">
+          <UTooltip text="Github·Congb19" @mouseenter="githubLinkJump">
             <UButton
+              class="cb-layout-header-github-link"
               icon="i-mdi-github-box"
               size="sm"
               color="gray"
@@ -53,7 +74,10 @@ const backHome = () => {
               target="_blank"
             />
           </UTooltip>
-          <UTooltip class="header-buttons-btn" :text="!isDark ? '切换到深色模式' : '切换到浅色模式'">
+          <UTooltip
+            class="header-buttons-btn"
+            :text="!isDark ? '切换到深色模式' : '切换到浅色模式'"
+          >
             <!-- <UButton
               :icon="
                 isDark
@@ -65,7 +89,12 @@ const backHome = () => {
               aria-label="Theme"
               @click="isDark = !isDark"
             /> -->
-            <UToggle v-model="isDark" size="md" on-icon="i-heroicons-moon-20-solid" off-icon="i-heroicons-sun-20-solid" />
+            <UToggle
+              v-model="isDark"
+              size="md"
+              on-icon="i-heroicons-moon-20-solid"
+              off-icon="i-heroicons-sun-20-solid"
+            />
           </UTooltip>
         </div>
       </div>
@@ -110,7 +139,8 @@ const backHome = () => {
   top: 0;
   width: 100vw;
   backdrop-filter: blur(8px);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px -5px 20px 20px rgba(103, 233, 142, 0.12);
 
   display: flex;
   flex-direction: column;
