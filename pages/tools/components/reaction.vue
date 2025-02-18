@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const results: number[] = reactive([]);
-const newestResult = ref(0);
+const historyResults: number[] = reactive([]);
+const recentResult = ref(0);
 const addResult = (result: number) => {
-  newestResult.value = result;
-  results.unshift(result);
+  recentResult.value = result;
+  historyResults.unshift(result);
 };
 const { status, start, trig } = useReaction(addResult);
 </script>
@@ -25,9 +25,9 @@ const { status, start, trig } = useReaction(addResult);
         @mousedown="trig"
       ></div>
       <template #footer>
-        <div>最新一次成绩：{{ newestResult }} ms</div>
-        <div v-if="results.length > 0">
-          历史记录：<span v-for="(item, index) in results" :key="index">
+        <div>最新一次成绩：{{ recentResult }} ms</div>
+        <div v-if="historyResults.length > 0">
+          历史记录：<span v-for="(item, index) in historyResults" :key="index">
             {{ item }} ms
           </span>
         </div>

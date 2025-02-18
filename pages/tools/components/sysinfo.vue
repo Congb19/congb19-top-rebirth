@@ -10,7 +10,7 @@ const info = reactive({
   system: [
     { label: '网络在线', value: online },
     { label: '是否有电池', value: battery.isSupported },
-    { label: '电量', value: battery.level }
+    { label: '电量', value: Number(battery.level.value) * 100 + '%' }
   ],
   browser: [
     { label: '刷新率', value: fps },
@@ -25,11 +25,11 @@ console.log(info);
 <template>
   <UCard>
     <template #header>
-      <h3>System:</h3>
+      <h3>系统信息:</h3>
       <li v-for="item in info.system">{{ item.label + ': ' + item.value }}</li>
     </template>
 
-    <h3>Browser:</h3>
+    <h3>浏览器相关:</h3>
     <li v-for="item in info.browser">{{ item.label + ': ' + item.value }}</li>
   </UCard>
 </template>

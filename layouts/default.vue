@@ -35,6 +35,14 @@ const githubLinkJump = () => {
   const target = document.querySelector('.cb-layout-header-github-link');
   if (target) jump(target);
 };
+const blogLinkJump = () => {
+  const target = document.querySelector('.cb-layout-header-blog');
+  if (target) jump(target);
+};
+const comboLinkJump = () => {
+  const target = document.querySelector('.cb-layout-header-combo');
+  if (target) jump(target);
+};
 const githubLinkRotate = () => {
   const target = document.querySelector('.cb-layout-header-github-link');
   if (target) rotate(target);
@@ -62,10 +70,36 @@ const avatarRotate = () => {
           <UHorizontalNavigation :links="links" />
         </div>
         <div class="header-buttons">
+          <UTooltip text="Blog·Congb19" @mouseenter="blogLinkJump">
+            <UButton
+              class="cb-layout-header-blog"
+              icon="i-mdi-book-edit-outline"
+              size="sm"
+              color="gray"
+              square
+              variant="ghost"
+              to="https://blog.congb19.com/#/"
+              target="_blank"
+            />
+            <!-- fork-knife-line -->
+          </UTooltip>
+          <UTooltip text="Combo UI·Congb19" @mouseenter="comboLinkJump">
+            <UButton
+              class="cb-layout-header-combo"
+              icon="i-mingcute-fork-knife-line"
+              size="sm"
+              color="gray"
+              square
+              variant="ghost"
+              to="https://combo.congb19.com/"
+              target="_blank"
+            />
+            <!-- fork-knife-line -->
+          </UTooltip>
           <UTooltip text="Github·Congb19" @mouseenter="githubLinkJump">
             <UButton
               class="cb-layout-header-github-link"
-              icon="i-mdi-github-box"
+              icon="i-mdi-github"
               size="sm"
               color="gray"
               square
@@ -75,7 +109,7 @@ const avatarRotate = () => {
             />
           </UTooltip>
           <UTooltip
-            class="header-buttons-btn"
+            class="header-buttons-switch ml-2"
             :text="!isDark ? '切换到深色模式' : '切换到浅色模式'"
           >
             <!-- <UButton
@@ -140,7 +174,7 @@ const avatarRotate = () => {
   width: 100vw;
   backdrop-filter: blur(8px);
   background-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0px -5px 20px 20px rgba(103, 233, 142, 0.12);
+  box-shadow: 0px -5px 20px 20px rgba(103, 233, 142, 0.02);
 
   display: flex;
   flex-direction: column;
@@ -163,9 +197,10 @@ const avatarRotate = () => {
     }
     .header-buttons {
       display: flex;
-      gap: 8px;
+      gap: 0px;
 
-      .header-buttons-btn {
+      .header-buttons-switch {
+        /* margin-left: 5px; */
         display: flex;
         flex-direction: column;
         justify-content: center;

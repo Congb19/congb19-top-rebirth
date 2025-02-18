@@ -93,8 +93,8 @@ useEventListener(document, 'keyup', (event) => {
 }
 
 .key-block {
-  background: #fff;
-  border: 2px solid #ddd;
+  background: #5ec269;
+  /* border: 2px solid #ddd; */
   border-radius: 8px;
   padding: 15px;
   text-align: center;
@@ -102,20 +102,31 @@ useEventListener(document, 'keyup', (event) => {
 }
 
 .key-block.active {
-  background: #4caf50;
-  border-color: #388e3c;
+  background: #5ec269;
+  /* border-color: #388e3c; */
   color: white;
   transform: scale(1.05);
 }
 
 .key-label {
+  color: #fff;
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
 .key-state {
+  color: #fff;
   font-size: 0.9em;
-  opacity: 0.8;
+  /* opacity: 0.8; */
+}
+
+.dark {
+  .key-label {
+    color: #000;
+  }
+  .key-state {
+    color: #000;
+  }
 }
 </style>
