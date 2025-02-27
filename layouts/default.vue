@@ -8,7 +8,7 @@ const isDark = computed({
     colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark';
   }
 });
-const links = [
+const routes = [
   {
     label: 'Home',
     icon: 'i-material-symbols-house-outline-rounded',
@@ -30,34 +30,49 @@ const backHome = () => {
 };
 
 const { jump, rotate } = useAnimation();
+const targetJump = (className: string) => {
+  const target = document.querySelector(className);
+  if (target) jump(target);
+};
+const targetRotate = (className: string) => {
+  const target = document.querySelector(className);
+  if (target) rotate(target);
+};
 
-const githubLinkJump = () => {
-  const target = document.querySelector('.cb-layout-header-github-link');
-  if (target) jump(target);
-};
-const blogLinkJump = () => {
-  const target = document.querySelector('.cb-layout-header-blog');
-  if (target) jump(target);
-};
-const comboLinkJump = () => {
-  const target = document.querySelector('.cb-layout-header-combo');
-  if (target) jump(target);
-};
-const githubLinkRotate = () => {
-  const target = document.querySelector('.cb-layout-header-github-link');
-  if (target) rotate(target);
-};
-const avatarRotate = () => {
-  const target = document.querySelector('.cb-layout-header-avatar');
-  if (target) rotate(target);
-};
+const links = [
+  {
+    tooltip: 'Blog·Congb19',
+    buttonClass: 'cb-layout-header-blog',
+    mouseEnterFn: () => targetJump('.cb-layout-header-blog'),
+    icon: 'i-mdi-book-edit-outline',
+    link: 'https://blog.congb19.com/#/'
+  },
+  {
+    tooltip: 'Combo UI·Congb19',
+    buttonClass: 'cb-layout-header-combo',
+    mouseEnterFn: () => targetJump('.cb-layout-header-combo'),
+    icon: 'i-mingcute-fork-knife-line',
+    link: 'https://combo.congb19.com/'
+  },
+  {
+    tooltip: 'Github·Congb19',
+    buttonClass: 'cb-layout-header-github-link',
+    mouseEnterFn: () => targetJump('.cb-layout-header-github-link'),
+    icon: 'i-mdi-github',
+    link: 'https://github.com/Congb19'
+  }
+];
 </script>
 
 <template>
   <div class="cb-layout" :class="{ 'cb-layout-dark': isDark }">
     <header class="cb-layout-header">
       <div class="header-items">
-        <div class="header-title" @click="backHome" @mouseenter="avatarRotate">
+        <div
+          class="header-title"
+          @click="backHome"
+          @mouseenter="() => targetRotate('.cb-layout-header-avatar')"
+        >
           <UAvatar
             class="cb-layout-header-avatar"
             src="/imgs/logo.jpg"
@@ -66,47 +81,26 @@ const avatarRotate = () => {
           />
           Congb19
         </div>
-        <div class="header-links">
-          <UHorizontalNavigation :links="links" />
+        <div class="header-routes">
+          <UHorizontalNavigation :links="routes" />
         </div>
         <div class="header-buttons">
-          <UTooltip text="Blog·Congb19" @mouseenter="blogLinkJump">
+          <UTooltip
+            v-for="link in links"
+            :text="link.tooltip"
+            @mouseenter="link.mouseEnterFn"
+          >
             <UButton
-              class="cb-layout-header-blog"
-              icon="i-mdi-book-edit-outline"
+              :class="link.buttonClass"
+              :icon="link.icon"
               size="sm"
               color="gray"
               square
               variant="ghost"
-              to="https://blog.congb19.com/#/"
+              :to="link.link"
               target="_blank"
             />
             <!-- fork-knife-line -->
-          </UTooltip>
-          <UTooltip text="Combo UI·Congb19" @mouseenter="comboLinkJump">
-            <UButton
-              class="cb-layout-header-combo"
-              icon="i-mingcute-fork-knife-line"
-              size="sm"
-              color="gray"
-              square
-              variant="ghost"
-              to="https://combo.congb19.com/"
-              target="_blank"
-            />
-            <!-- fork-knife-line -->
-          </UTooltip>
-          <UTooltip text="Github·Congb19" @mouseenter="githubLinkJump">
-            <UButton
-              class="cb-layout-header-github-link"
-              icon="i-mdi-github"
-              size="sm"
-              color="gray"
-              square
-              variant="ghost"
-              to="https://github.com/Congb19"
-              target="_blank"
-            />
           </UTooltip>
           <UTooltip
             class="header-buttons-switch ml-2"
