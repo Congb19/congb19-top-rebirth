@@ -1,3 +1,10 @@
+<script setup>
+
+const appStore = useAppStore()
+await callOnce(appStore.fetch)
+
+</script>
+
 <template>
   <div class="cb-index">
     <div class="cb-about">
