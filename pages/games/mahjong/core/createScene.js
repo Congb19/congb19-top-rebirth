@@ -15,6 +15,7 @@ export default (options) => {
   const renderer = new THREE.WebGLRenderer();
   renderer.setSize(containerWidth, containerHeight);
   containerElement.appendChild(renderer.domElement);
+  camera.lookAt( 0, 0, 0 );
   return {
     scene,
     camera,

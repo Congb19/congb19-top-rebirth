@@ -1,6 +1,6 @@
 <script setup>
 import createScene from './core/createScene';
-import renderTable from './core/renderTable';
+import renderTable from './render/renderTable';
 
 const container = ref();
 const containerWidth = 800;
