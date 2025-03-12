@@ -10,12 +10,12 @@ export default (options) => {
     0.1,
     1000
   );
-  camera.position.z = 5;
+  camera.position.set( 0, -50, 90 );
 
   const renderer = new THREE.WebGLRenderer();
   renderer.setSize(containerWidth, containerHeight);
   containerElement.appendChild(renderer.domElement);
-  camera.lookAt( 0, 0, 0 );
+  camera.lookAt( 0, -9, 0 );
   return {
     scene,
     camera,
