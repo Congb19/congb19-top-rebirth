@@ -1,7 +1,9 @@
 <script setup>
-
 const appStore = useAppStore()
 await callOnce(appStore.fetch)
+
+const { data } = await useFetch('/api/test')
+console.log(data.value)
 
 </script>
 
@@ -22,6 +24,9 @@ await callOnce(appStore.fetch)
         :avatar="{ src: '/imgs/dog.jpg' }"
         title="这是林小包！"
       />
+      {{ appStore.name }}: {{ appStore.description }}
+      <div>api test</div>
+      {{ data }}
     </div>
   </div>
 </template>

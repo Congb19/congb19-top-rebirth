@@ -8,11 +8,14 @@ import {
   CSS3DObject
 } from 'three/addons/renderers/CSS3DRenderer.js';
 
-import startGame from './core/startGame';
+import connectServer from './core/connectServer';
 
 const container = ref();
 const containerWidth = 800;
 const containerHeight = 450;
+
+// connection
+const { isConnected, transport } = connectServer();
 
 onMounted(() => {
   const { scene, camera, renderer } = createScene({
@@ -28,11 +31,13 @@ onMounted(() => {
     renderer.render(scene, camera);
   }
   animate();
-  startGame()
 });
 </script>
 <template>
   <div ref="container" class="cb-maj-container"></div>
+  <div>connection status:</div>
+  <p>Status: {{ isConnected ? 'connected' : 'disconnected' }}</p>
+  <p>Transport: {{ transport }}</p>
 </template>
 
 <style>
