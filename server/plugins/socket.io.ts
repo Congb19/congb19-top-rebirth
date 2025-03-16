@@ -3,6 +3,10 @@ import { Server as Engine } from 'engine.io';
 import { Server } from 'socket.io';
 import { defineEventHandler } from 'h3';
 
+const cbMajGamesState = {
+  games: []
+}
+
 export default defineNitroPlugin((nitroApp: NitroApp) => {
   const engine = new Engine();
   const io = new Server();
@@ -11,7 +15,11 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
 
   io.on('connection', (socket) => {
     // ...
-    console.log('a user connected');
+    console.log('a user connected', socket);
+  });
+  io.on('startGame', (socket) => {
+    // ...
+    console.log('startGame', socket);
   });
 
   nitroApp.router.use(
