@@ -9,11 +9,20 @@ const container = ref();
 const containerWidth = 800;
 const containerHeight = 450;
 
+// state
 const threeJsState = reactive({
   scene: null,
   camera: null,
   container: null,
   renderer: null
+});
+const connectionState = reactive({
+  userId: null,
+  roomId: null,
+  isConnected: false,
+  inRoom: false,
+  transport: '',
+  socket: null
 });
 
 // connection
@@ -21,11 +30,35 @@ const isConnected = ref(false);
 const transport = ref('');
 const connect = () => {
   const connection = connectServer();
-  isConnected.value = connection.isConnected;
-  transport.value = connection.transport;
+  connectionState.isConnected = connection.isConnected;
+  connectionState.transport = connection.transport;
+  connectionState.socket = connection.socket;
+};
+const joinRoom = () => {
+  const message = {
+    userId: connectionState.userId,
+    roomId: connectionState.roomId
+  };
+  console.log('joinRoom', message);
+  connectionState.socket.emit('joinRoom', message);
+}
+const exitRoom = () => {
+  const message = {
+    userId: connectionState.userId,
+    roomId: connectionState.roomId
+  };
+  console.log('exitRoom', message);
+  connectionState.socket.emit('exitRoom', message);
+}
+const sendMessageTest = () => {
+  const message = {
+    userId: 'test1'
+  };
+  console.log('sendMessageTest', message, connectionState.socket);
+  connectionState.socket.emit('sendMessageTest', message);
 };
 
-const test = () => {
+const renderTest = () => {
   renderMajTile(threeJsState);
 };
 
@@ -40,16 +73,23 @@ onMounted(() => {
     },
     threeJsState
   );
-
 });
 </script>
 <template>
-  <UButton @click="connect">加入房间</UButton>
   <div ref="container" class="cb-maj-container"></div>
+  <UButton @click="renderTest">renderTest</UButton>
   <div>connection status:</div>
-  <p>Status: {{ isConnected ? 'connected' : 'disconnected' }}</p>
-  <p>Transport: {{ transport }}</p>
-  <UButton @click="test">test</UButton>
+  <p>Status: {{ connectionState.isConnected ? 'connected' : 'disconnected' }}</p>
+  <p>Transport: {{ connectionState.transport }}</p>
+  {{ connectionState.socket?.id }}
+  <UCard title="连接服务器" class="cb-login-card">
+    <UInput v-model="connectionState.userId" :disabled="connectionState.inRoom"></UInput>
+    <UInput v-model="connectionState.roomId" :disabled="connectionState.inRoom"></UInput>
+    <UButton @click="connect">连接服务器</UButton>
+    <UButton @click="joinRoom">加入房间</UButton>
+    <UButton @click="exitRoom">离开房间</UButton>
+    <UButton @click="sendMessageTest">sendMessageTest</UButton>
+  </UCard>
 </template>
 
 <style>
@@ -57,6 +97,10 @@ onMounted(() => {
   width: 100vw;
   aspect-ratio: 16 / 9;
   background-color: white;
+}
+.cb-login-card {
+  width: 400px;
+
 }
 </style>
 <style src="./style/index.css"></style>

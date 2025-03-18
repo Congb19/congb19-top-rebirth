@@ -95,3 +95,9 @@
 {"type":"tsumo","actor":1,"pai":"?"}
 {"type":"dahai","actor":1,"pai":"F","tsumogiri":false}
 {"type":"tsumo","actor":2,"pai":"9p"}
+
+
+
+server                                         client1
+
+

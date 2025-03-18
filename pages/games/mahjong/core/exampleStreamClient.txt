@@ -1,0 +1,29 @@
+0 房主
+S: {"type":"start_game"}
+
+
+
+R: {"type":"start_game_ok"}
+
+
+R: {"type":"start_kyoku", xxx}
+// 渲染
+
+
+
+// 如果nextActor是自己，则提示对应操作
+R: {"type":"tsumo","actor":0,"pai":"6p"}
+S: {"type":"ankan","actor":0,"pai":"6p","consumed": ["6p", "6p", "6p"]}
+
+
+R: {"type":"ankan","actor":0,"pai":"6p","consumed": ["6p", "6p", "6p"]}
+
+R: {"type":"tsumo","actor":0,"pai":"1s", "nextActor": 0, "canKan": false}
+// 如果nextActor是自己，则解锁操作
+S: {"type":"dahai","actor":0,"pai":"1s","tsumogiri":false}
+
+
+
+
+R: {"type":"dahai","actor":0,"pai":"1s"}
+// 自己接到自己打的牌则不管

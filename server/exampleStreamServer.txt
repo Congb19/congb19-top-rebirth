@@ -1,0 +1,27 @@
+server
+
+R: {"type":"start_game"}
+// 四个玩家进入房间，发送ok给四个玩家
+S: {"type":"start_game_ok"}
+
+// 生成牌山，发牌，开始本轮。先配好初始配牌，给四个用户发不同的tehais
+S: {"type":"start_kyoku", xxx}
+
+
+// 发牌
+// 判断当前actor是否可以杠。如果可以，告诉当前actor需要判断。发牌时，其他家收到的pai是"?"
+S: {"type":"tsumo","actor":0,"pai":"6p", "nextActor": 0, "canKan": true}
+
+
+
+R: {"type":"ankan","actor":0,"pai":"6p","consumed": ["6p", "6p", "6p"]}
+S: {"type":"ankan","actor":0,"pai":"6p","consumed": ["6p", "6p", "6p"]}
+
+S: {"type":"tsumo","actor":0,"pai":"1s", "nextActor": 0, "canKan": false}
+
+
+
+R: {"type":"dahai","actor":0,"pai":"1s","tsumogiri":false}
+// 判断是否为其他家可以荣胡、吃、碰、杠的牌，如果是，则告诉对应家一些额外的信息，等待所有对应家判断。
+// 告诉其他三家，actor 0打了这张牌
+S: {"type":"dahai","actor":0,"pai":"1s", "nextActor": 1}
