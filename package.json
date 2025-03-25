@@ -17,6 +17,7 @@
     "@iconify-json/mingcute": "^1.2.3",
     "@nuxt/ui": "2.20.0",
     "@pinia/nuxt": "^0.10.1",
+    "h3": "^1.15.1",
     "nitropack": "^2.11.6",
     "nuxt": "^3.14.1592",
     "pinia": "^3.0.1",
