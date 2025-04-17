@@ -29,6 +29,7 @@ const backHome = () => {
   navigateTo('/');
 };
 
+// animation
 const { jump, rotate } = useAnimation();
 const targetJump = (className: string) => {
   const target = document.querySelector(className);
@@ -38,6 +39,10 @@ const targetRotate = (className: string) => {
   const target = document.querySelector(className);
   if (target) rotate(target);
 };
+
+// useMouseTail
+const { mousePosition, start, stop } = useMouseTail({ showOriginalMouse: true });
+start();
 
 const links = [
   {
@@ -68,28 +73,15 @@ const links = [
   <div class="cb-layout" :class="{ 'cb-layout-dark': isDark }">
     <header class="cb-layout-header">
       <div class="header-items">
-        <div
-          class="header-title"
-          @click="backHome"
-          @mouseenter="() => targetRotate('.cb-layout-header-avatar')"
-        >
-          <UAvatar
-            class="cb-layout-header-avatar"
-            src="/imgs/logo.jpg"
-            alt="Avatar"
-            size="sm"
-          />
+        <div class="header-title" @click="backHome" @mouseenter="() => targetRotate('.cb-layout-header-avatar')">
+          <UAvatar class="cb-layout-header-avatar" src="/imgs/logo.jpg" alt="Avatar" size="sm" />
           Congb19
         </div>
         <div class="header-routes">
           <UHorizontalNavigation :links="routes" />
         </div>
         <div class="header-buttons">
-          <UTooltip
-            v-for="link in links"
-            :text="link.tooltip"
-            @mouseenter="link.mouseEnterFn"
-          >
+          <UTooltip v-for="link in links" :text="link.tooltip" @mouseenter="link.mouseEnterFn">
             <UButton
               :class="link.buttonClass"
               :icon="link.icon"
@@ -102,10 +94,7 @@ const links = [
             />
             <!-- fork-knife-line -->
           </UTooltip>
-          <UTooltip
-            class="header-buttons-switch ml-2"
-            :text="!isDark ? '切换到深色模式' : '切换到浅色模式'"
-          >
+          <UTooltip class="header-buttons-switch ml-2" :text="!isDark ? '切换到深色模式' : '切换到浅色模式'">
             <!-- <UButton
               :icon="
                 isDark
@@ -151,11 +140,7 @@ const links = [
 .cb-layout {
   /* background-color: red; */
   height: 100vh;
-  background: linear-gradient(
-      217deg,
-      rgba(241, 191, 191, 0.3),
-      rgba(255, 0, 0, 0) 70.71%
-    ),
+  background: linear-gradient(217deg, rgba(241, 191, 191, 0.3), rgba(255, 0, 0, 0) 70.71%),
     linear-gradient(127deg, rgba(0, 255, 0, 0.2), rgba(0, 255, 0, 0) 70.71%),
     linear-gradient(336deg, rgba(154, 219, 229, 0.3), rgba(0, 0, 255, 0) 70.71%);
 }
