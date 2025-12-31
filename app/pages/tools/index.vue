@@ -1,20 +1,15 @@
-<script setup lang="ts">
-import Keyboard from './components/keyboard.vue';
-import Screen from './components/screen.vue';
-import SysInfo from './components/sysinfo.vue';
-import Reaction from './components/reaction.vue';
-</script>
+<script setup lang="ts"></script>
 <template>
   <div class="cb-index">
     <div class="cb-tools">
       <USeparator class="cb-tools-divider" label="系统信息" />
-      <SysInfo />
+      <ToolsSysinfo />
       <USeparator class="cb-tools-divider" label="键盘检测工具" />
-      <Keyboard />
+      <ToolsKeyboard />
       <USeparator class="cb-tools-divider" label="屏幕检测工具" />
-      <Screen />
+      <ToolsScreen />
       <USeparator class="cb-tools-divider" label="反应速度测试" />
-      <Reaction />
+      <ToolsReaction />
     </div>
   </div>
 </template>
@@ -25,7 +20,6 @@ import Reaction from './components/reaction.vue';
 
   margin-bottom: 20px;
 
-  /* padding: 100px 0; */
   .cb-tools-divider {
     margin: 20px 0;
   }

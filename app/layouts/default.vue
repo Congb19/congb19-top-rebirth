@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useAnimation } from '~/composables/useAnimation';
-import { useMouseTail } from '~/composables/useMouseTail';
-
 const colorMode = useColorMode();
 const isDark = computed({
   get() {

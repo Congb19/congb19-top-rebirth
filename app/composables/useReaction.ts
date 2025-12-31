@@ -3,10 +3,9 @@ export const useReaction = (callback: Function) => {
 
   const status = ref('ready'); // ready, waiting, testing
   const timer = ref();
-  let record = ref([0, 0]);
+  let record: Ref<[number, number]> = ref([0, 0]);
   const result = computed(() => {
-    if (record.value[1] > record.value[0])
-      return record.value[1] - record.value[0];
+    if (record.value[1] > record.value[0]) return record.value[1] - record.value[0];
     return 0;
   });
 
@@ -22,7 +21,7 @@ export const useReaction = (callback: Function) => {
   const trig = async () => {
     if (status.value === 'ready' || status.value === 'waiting') {
       stop();
-      toast.add({ title: '抢跑了！', timeout: 2000 });
+      toast.add({ title: '抢跑了！', duration: 2000 });
     } else if (status.value === 'testing') {
       record.value[1] = Number(Date.now());
       await nextTick();

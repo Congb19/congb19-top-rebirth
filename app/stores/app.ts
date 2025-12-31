@@ -5,7 +5,7 @@ export const useApp1Store = defineStore('appStore', {
   }),
   actions: {
     async fetch() {
-      const infos = await $fetch('https://api.nuxt.com/modules/pinia');
+      const infos: any = await $fetch('https://api.nuxt.com/modules/pinia');
       // console.log('ok,', infos);
       this.name = infos.name;
       this.description = infos.description;
