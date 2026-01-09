@@ -1,2 +1,34 @@
-@import "tailwindcss";
-@import "@nuxt/ui";
+@import 'tailwindcss';
+@import '@nuxt/ui';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+.cb-index {
+  @apply w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 h-full;
+  display: flex;
+  justify-content: center;
+  max-width: var(--ui-container);
+  margin: 0 auto;
+}
+
+.cb-padding {
+  @apply px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8;
+}
+.cb-margin {
+  @apply mx-4 my-4 sm:mx-6 sm:my-6 lg:mx-8 lg:my-8;
+}
+.cb-margin-x {
+  @apply mx-4 sm:mx-6 lg:mx-8;
+}
+.cb-margin-y {
+  @apply my-4 sm:my-6 lg:my-8;
+}

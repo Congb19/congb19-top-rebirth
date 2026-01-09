@@ -1,0 +1,1 @@
+import{n as t,e as c,p as e,c as n,o as l,A as p}from"./CESK1Vus.js";const u={base:"border-t border-default my-12"},f={__name:"ProseHr",props:{class:{type:null,required:!1}},setup(s){const a=s,o=t(),r=c(()=>e({extend:e(u),...o.ui?.prose?.hr||{}}));return(m,i)=>(l(),n("hr",{class:p(r.value({class:a.class}))},null,2))}};export{f as default};

@@ -15,11 +15,7 @@
 </template>
 <style>
 .cb-tools {
-  min-width: 600px;
-  max-width: 800px;
-
-  margin-bottom: 20px;
-
+  width: 100%;
   .cb-tools-divider {
     margin: 20px 0;
   }

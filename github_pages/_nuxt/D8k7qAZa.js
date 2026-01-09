@@ -1,1 +1,0 @@
-import{a1 as l,e as n,a2 as s,c as r,o as p,S as u,U as d}from"./CwFxSp7p.js";const i={base:""},_={__name:"ProseTbody",props:{class:{type:null,required:!1}},setup(e){const a=e,o=l(),t=n(()=>s({extend:s(i),...o.ui?.prose?.tbody||{}}));return(c,m)=>(p(),r("tbody",{class:d(t.value({class:a.class}))},[u(c.$slots,"default")],2))}};export{_ as default};

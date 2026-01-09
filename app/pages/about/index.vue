@@ -30,8 +30,7 @@ await callOnce(app1Store.fetch);
 <style>
 .cb-about {
   margin-top: 20px;
-  min-width: 600px;
-  max-width: 800px;
+  width: 100%;
   .cb-about-alert {
     margin: 20px 0;
   }

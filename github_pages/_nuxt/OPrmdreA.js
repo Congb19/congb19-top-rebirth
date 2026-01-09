@@ -1,0 +1,1 @@
+import{n as c,e as l,p as s,c as r,o as p,D as u,A as d}from"./CESK1Vus.js";const i={base:""},_={__name:"ProseTbody",props:{class:{type:null,required:!1}},setup(e){const o=e,a=c(),t=l(()=>s({extend:s(i),...a.ui?.prose?.tbody||{}}));return(n,m)=>(p(),r("tbody",{class:d(t.value({class:o.class}))},[u(n.$slots,"default")],2))}};export{_ as default};
