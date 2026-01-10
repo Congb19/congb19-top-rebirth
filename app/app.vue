@@ -22,11 +22,11 @@ const routes = [
     icon: 'i-material-symbols-tools-wrench-outline-rounded',
     to: '/tools'
   },
-  {
-    label: 'About',
-    icon: 'i-material-symbols-familiar-face-and-zone-outline',
-    to: '/about'
-  },
+  // {
+  //   label: 'About',
+  //   icon: 'i-material-symbols-familiar-face-and-zone-outline',
+  //   to: '/about'
+  // },
   {
     label: 'Blog',
     icon: 'i-material-symbols-battery-charging-50-outline-rounded',

@@ -1,0 +1,1 @@
+import{A as l,e as n,B as s,c as r,o as p,p as u,F as d}from"./DCoT4AC8.js";const i={base:""},_={__name:"ProseTbody",props:{class:{type:null,required:!1}},setup(e){const o=e,a=l(),t=n(()=>s({extend:s(i),...a.ui?.prose?.tbody||{}}));return(c,m)=>(p(),r("tbody",{class:d(t.value({class:o.class}))},[u(c.$slots,"default")],2))}};export{_ as default};

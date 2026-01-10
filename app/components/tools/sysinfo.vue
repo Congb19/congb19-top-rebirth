@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 const online = useOnline();
 const battery = useBattery();
@@ -23,7 +22,7 @@ console.log(info);
 </script>
 
 <template>
-  <UCard>
+  <UCard class="sysinfo-container">
     <template #header>
       <h3>系统信息:</h3>
       <li v-for="item in info.system">{{ item.label + ': ' + item.value }}</li>
@@ -33,3 +32,8 @@ console.log(info);
     <li v-for="item in info.browser">{{ item.label + ': ' + item.value }}</li>
   </UCard>
 </template>
+<style>
+.sysinfo-container {
+  margin: 1px;
+}
+</style>

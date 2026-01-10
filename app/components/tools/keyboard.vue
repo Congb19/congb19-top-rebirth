@@ -71,6 +71,7 @@ useEventListener(document, 'keyup', (event) => {
 
 <style scoped>
 .keyboard-container {
+  margin: 1px;
   border-radius: 12px;
   /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
 }

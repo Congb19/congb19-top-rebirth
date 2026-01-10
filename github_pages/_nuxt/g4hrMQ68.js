@@ -1,0 +1,1 @@
+import{_ as o}from"./DlAUqK2U.js";import{c as t,o as s,p as c}from"./DCoT4AC8.js";const r={},a={class:"cb-layout"};function n(e,_){return s(),t("div",a,[c(e.$slots,"default")])}const d=o(r,[["render",n]]);export{d as default};

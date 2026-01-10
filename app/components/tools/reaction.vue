@@ -37,6 +37,7 @@ const { status, start, trig } = useReaction(addResult);
 </template>
 <style>
 .cb-reaction {
+  margin: 1px;
   .cb-reaction-board {
     width: 100%;
     height: 200px;

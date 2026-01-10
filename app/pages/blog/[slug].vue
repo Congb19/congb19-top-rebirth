@@ -9,13 +9,12 @@ console.log('detail!', post.value);
 
 <template>
   <div class="cb-index">
-    <!-- Render the blog post as Prose & Vue components -->
+    <!-- <ContentRenderer :value="post" /> -->
+
     <UCard variant="subtle" class="cb-margin-y">
       <ContentRenderer :value="post" />
 
-      <template #footer>
-        <Placeholder class="h-8" />
-      </template>
+      <!-- <template #footer> </template> -->
     </UCard>
   </div>
 </template>

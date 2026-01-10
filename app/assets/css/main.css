@@ -13,7 +13,7 @@ body {
 }
 
 .cb-index {
-  @apply w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 h-full;
+  @apply w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 h-full flex-col;
   display: flex;
   justify-content: center;
   max-width: var(--ui-container);

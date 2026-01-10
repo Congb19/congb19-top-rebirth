@@ -38,14 +38,11 @@ useEventListener(document, 'keydown', (e) => {
 
   switch (e.key) {
     case 'ArrowLeft':
-      currentColorIndex.value =
-        (currentColorIndex.value - 1 + colors.value.length) %
-        colors.value.length;
+      currentColorIndex.value = (currentColorIndex.value - 1 + colors.value.length) % colors.value.length;
       showColor();
       break;
     case 'ArrowRight':
-      currentColorIndex.value =
-        (currentColorIndex.value + 1) % colors.value.length;
+      currentColorIndex.value = (currentColorIndex.value + 1) % colors.value.length;
       showColor();
       break;
     case 'Escape':
@@ -64,26 +61,22 @@ useEventListener(document, 'fullscreenchange', () => {
 </script>
 
 <template>
-  <div>
-    <UButton size="md" v-if="!isTesting" @click="startTest">
-      开始屏幕检测
-    </UButton>
+  <UCard class="screen-container">
+    <UButton size="md" v-if="!isTesting" @click="startTest"> 开始屏幕检测 </UButton>
 
-    <div
-      v-show="isTesting"
-      ref="container"
-      class="color-screen"
-      :style="{ backgroundColor: currentColor.value }"
-    >
+    <div v-show="isTesting" ref="container" class="color-screen" :style="{ backgroundColor: currentColor.value }">
       <div v-show="showColorInfo" class="color-info">
         <div class="color-name">{{ currentColor.name }}</div>
         <div class="instruction">← → 切换颜色 | ESC 退出检测</div>
       </div>
     </div>
-  </div>
+  </UCard>
 </template>
 
 <style scoped>
+.screen-container {
+  margin: 1px;
+}
 .color-screen {
   position: fixed;
   top: 0;
