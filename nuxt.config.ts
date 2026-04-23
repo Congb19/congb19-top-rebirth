@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  server: {
+  devServer: {
     port: 7777
   },
   app: { cdnURL: '' },
