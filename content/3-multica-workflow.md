@@ -6,7 +6,25 @@ path: /blog/3
 
 # 使用 Multica 构建小型项目团队协作工作流
 
-> 纯本地部署，不依赖任何第三方云服务，人 + Agent 协作完成项目开发。
+> 纯本地部署，不依赖任何第三方云服务，人 + Agent 协作完成项目开发。本文由 Multica Agent 辅助编写。
+
+## 什么是 Multica
+
+[Multica](https://github.com/multica-ai/multica) 是一个开源的 AI Agent 协作平台，专注于为小型团队提供本地化的 Agent 工作流管理能力。
+
+**核心特性：**
+
+- **多 Agent 协作**：支持配置多个具有不同角色的 Agent（如程序员、产品经理、技术专家），通过 Issue 流转实现任务接力
+- **完整任务管理**：自带看板、Issue、Inbox 等功能，任务状态全程可追溯
+- **Self-Host 部署**：完全本地部署，不依赖任何第三方云服务，数据完全自控
+- **Autopilot 自动化**：支持配置定时自动任务，减少重复性人工操作
+- **GitHub 深度集成**：Agent 可以代为提交 PR、进行 Code Review 和代码合入
+
+**推荐使用场景：**
+
+- 个人开发者或小型团队，希望用 AI Agent 辅助完成项目开发
+- 对数据隐私有要求，需要完全自控的 Agent 协作方案
+- 探索 AI 原生开发流程，需要任务管理和多 Agent 协作能力
 
 ## 为什么选择 Self-Host
 
@@ -16,15 +34,7 @@ path: /blog/3
 
 ## 快速部署
 
-使用 Docker 一键启动，最小化配置：
-
-```bash
-docker run -d \
-  --name multica \
-  -p 3000:3000 \
-  -v multica-data:/data \
-  multica/multica
-```
+使用 Docker 部署，详见官方文档：[Self-Host 部署指南](https://github.com/multica-ai/multica/blob/main/SELF_HOSTING.md)
 
 首次登录时，由于是本地部署，验证码会直接输出在 Docker 容器日志中，找到对应验证码完成验证即可进入。
 
